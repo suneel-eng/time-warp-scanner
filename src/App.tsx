@@ -1,24 +1,77 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Scanner from './Scanner';
 
-function App() {
+const Header = styled.header`
+  padding: 20px;
+`;
+
+const Heading = styled.h1`
+  color: grey;
+  text-align: center;
+`;
+
+const Container = styled.div`
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+`;
+
+const FormControl = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: start;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  border: 1px solid grey;
+  color: grey;
+  font-weight: bold;
+  background-color: white;
+  width: 100px;
+  cursor: pointer;
+`;
+
+function App(): JSX.Element {
+  const [ scanningType, setScanningType ] = useState<"horizontal" | "vertical" >("horizontal");
+  const [ showScannig, setShowScanning ] = useState<boolean>(false);
+
+  const enableHorizontalScanning = () => {
+    setScanningType("horizontal");
+  }
+
+  const enableVerticalScanning = () => {
+    setScanningType("vertical");
+  }
+
+  const startScanning = async () => {
+    setShowScanning(true);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header>
+        <Heading>TIME WARP SCANNER</Heading>
+      </Header>
+      <Container>
+        <FormControl>
+          <input type="radio" checked={scanningType === "horizontal"} name="scanningType" id="horizontal" onChange={() => enableHorizontalScanning()} />
+          <label htmlFor='horizontal'>Horizontal Scanning</label>
+        </FormControl>
+        <FormControl>
+          <input type="radio" checked={scanningType === "vertical"} name="scanningType" id="vertical" onChange={() => enableVerticalScanning()} />
+          <label htmlFor='vertical'>Vertical Scanning</label>
+        </FormControl>
+        <Button onClick={() => startScanning()}>Start</Button>
+      </Container>
+      { showScannig && <Scanner scanningType={scanningType} onClose={() => setShowScanning(false) }/>}
     </div>
   );
 }
