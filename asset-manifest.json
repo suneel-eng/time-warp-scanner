@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/time-warp-scanner/static/css/main.81dc1d3f.css",
+    "main.js": "/time-warp-scanner/static/js/main.0a5d1bc8.js",
+    "static/js/787.01a92932.chunk.js": "/time-warp-scanner/static/js/787.01a92932.chunk.js",
+    "index.html": "/time-warp-scanner/index.html",
+    "main.81dc1d3f.css.map": "/time-warp-scanner/static/css/main.81dc1d3f.css.map",
+    "main.0a5d1bc8.js.map": "/time-warp-scanner/static/js/main.0a5d1bc8.js.map",
+    "787.01a92932.chunk.js.map": "/time-warp-scanner/static/js/787.01a92932.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81dc1d3f.css",
+    "static/js/main.0a5d1bc8.js"
+  ]
+}
